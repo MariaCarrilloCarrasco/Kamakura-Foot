@@ -1,4 +1,4 @@
-import { products } from '../assents/data/data.js';
+import { getProducts } from './productsManager.js';
 
 let cart = [];
 
@@ -6,10 +6,7 @@ let cart = [];
 export const toggleCart = () => {
     const cartContainer = document.getElementById('cart-container');
     if (cartContainer) {
-        cartContainer.classList.toggle('active'); // assuming 'active' toggles visibility based on cart.css
-        // If there's a specific class or style in cart.css to open the cart, let's assume it's just toggling display or a class.
-        // The instructions say "abra el elemento que lo contiene y al volver hacer click, lo cierre. No debes preocuparte por los estilos porque ya existen en el archivo cart.css"
-        // Let's check cart.css to see the exact class. Usually it's 'active' or 'show'.
+        cartContainer.classList.toggle('active'); 
         if(cartContainer.style.display === 'none' || cartContainer.style.display === '') {
             cartContainer.style.display = 'block';
         } else {
@@ -21,13 +18,13 @@ export const toggleCart = () => {
 export const getCart = () => cart;
 
 export const addToCart = (productId) => {
+    const products = getProducts();
     const product = products.find(p => p.id === parseInt(productId));
     if (!product) return;
     
     const existingItem = cart.find(item => item.id === product.id);
     if (existingItem) {
-        // Can't add twice per instructions, maybe just return or increase qty
-        // Instructions: "No puedes añadir dos veces el mismo plato."
+        
         return; 
     }
     

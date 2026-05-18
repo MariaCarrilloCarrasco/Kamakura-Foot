@@ -1,4 +1,4 @@
-import { addToCart, removeFromCart, updateQuantity, toggleCart } from './cart.js';
+import { addToCart, removeFromCart, updateQuantity, toggleCart, getCart } from './cart.js';
 import { showReceipt, hideReceipt, pay } from './receipt.js';
 
 export const initializeEvents = () => {
@@ -32,12 +32,22 @@ export const initializeEvents = () => {
         if (e.target.classList.contains('add-button')) {
             const productId = parseInt(e.target.dataset.id);
             if (!isNaN(productId)) {
-                addToCart(productId);
+                const cartContainer = document.getElementById('cart-container');
+                const cart = getCart();
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    // If product is already in the cart, clicking "add" again closes the cart
+                    if (cartContainer) cartContainer.style.display = 'none';
+                } else {
+                    // If product is not in the cart, add it and open the cart
+                    addToCart(productId);
+                    if (cartContainer) cartContainer.style.display = 'block';
+                }
             }
         }
         
         // Remove from cart (close button in cart item)
-        // Check if the click is on the button itself or the image inside it
         const closeBtn = e.target.closest('.close-button');
         if (closeBtn && closeBtn.closest('.cart-container')) {
             const productId = parseInt(closeBtn.dataset.id);

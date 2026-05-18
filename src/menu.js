@@ -1,5 +1,6 @@
-import { filters, products } from '../assents/data/data.js';
+import { filters } from '../assents/data/data.js';
 import { initializeEvents } from './events.js';
+import { filterProducts } from './searcher.js';
 
 // DEBE imprimir en pantalla la información de filtros.
 export const renderFilters = () => {
@@ -31,10 +32,8 @@ export const renderProducts = (categoryFilter = 'todos') => {
     // Clear static content
     productsContainer.innerHTML = '';
     
-    // Filter products based on selected category
-    const filteredProducts = categoryFilter === 'todos' 
-        ? products 
-        : products.filter(product => product.category === categoryFilter);
+    // Filter products based on selected category using our searcher module
+    const filteredProducts = filterProducts(categoryFilter);
     
     filteredProducts.forEach(product => {
         const productDiv = document.createElement('div');

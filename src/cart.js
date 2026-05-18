@@ -40,6 +40,11 @@ export const removeFromCart = (productId) => {
     renderCart();
 };
 
+export const clearCart = () => {
+    cart = [];
+    renderCart();
+};
+
 export const updateQuantity = (productId, change) => {
     const item = cart.find(item => item.id === productId);
     if (item) {

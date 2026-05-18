@@ -1,10 +1,29 @@
 import { addToCart, removeFromCart, updateQuantity, toggleCart } from './cart.js';
+import { showReceipt, hideReceipt, pay } from './receipt.js';
 
 export const initializeEvents = () => {
     // Toggle cart visibility
     const cartButton = document.getElementById('cart');
     if (cartButton) {
         cartButton.addEventListener('click', toggleCart);
+    }
+    
+    // Proceed to pay button
+    const proceedPayBtn = document.getElementById('proceedPay-button');
+    if (proceedPayBtn) {
+        proceedPayBtn.addEventListener('click', showReceipt);
+    }
+    
+    // Close receipt button
+    const closeReceiptBtn = document.getElementById('close-receipt');
+    if (closeReceiptBtn) {
+        closeReceiptBtn.addEventListener('click', hideReceipt);
+    }
+    
+    // Pay button
+    const payBtn = document.getElementById('pay-button');
+    if (payBtn) {
+        payBtn.addEventListener('click', pay);
     }
     
     // Use event delegation on the document or main container for dynamically created elements

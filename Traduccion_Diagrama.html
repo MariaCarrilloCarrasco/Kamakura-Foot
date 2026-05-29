@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traducción Diagrama Canva</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        ul { list-style-type: none; padding-left: 0; }
+        li { background: #f9f9f9; margin-bottom: 5px; padding: 10px; border-radius: 5px; }
+        strong { color: #222; }
+        .arrow { color: #888; margin: 0 10px; }
+        .mermaid { margin-top: 30px; text-align: center; }
+    </style>
+    <!-- Include Mermaid.js for rendering the diagram -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <h1>Traducción del Diagrama de Flujo de Canva</h1>
+
+    <h2>Menú y Navegación</h2>
+    <ul>
+        <li><strong>Home</strong> <span class="arrow">➔</span> Home</li>
+        <li><strong>Menú</strong> <span class="arrow">➔</span> Menu</li>
+        <li><strong>Todos</strong> <span class="arrow">➔</span> All</li>
+        <li><strong>Ramen</strong> <span class="arrow">➔</span> Ramen</li>
+        <li><strong>Sushi</strong> <span class="arrow">➔</span> Sushi</li>
+        <li><strong>Entradas</strong> <span class="arrow">➔</span> Starters (o Appetizers)</li>
+        <li><strong>Postres</strong> <span class="arrow">➔</span> Desserts</li>
+        <li><strong>Options</strong> <span class="arrow">➔</span> Options</li>
+    </ul>
+
+    <h2>Carrito y Proceso</h2>
+    <ul>
+        <li><strong>Añadir</strong> <span class="arrow">➔</span> Add</li>
+        <li><strong>Carrito</strong> <span class="arrow">➔</span> Cart</li>
+        <li><strong>Nombre</strong> <span class="arrow">➔</span> Name</li>
+        <li><strong>Cantidad</strong> <span class="arrow">➔</span> Quantity</li>
+        <li><strong>Total</strong> <span class="arrow">➔</span> Total</li>
+        <li><strong>Proceder al pago</strong> <span class="arrow">➔</span> Proceed to checkout (o Proceed to pay)</li>
+    </ul>
+
+    <h2>Recibo y Pago</h2>
+    <ul>
+        <li><strong>Recibo</strong> <span class="arrow">➔</span> Receipt</li>
+        <li><strong>Nombre del producto</strong> <span class="arrow">➔</span> Product name</li>
+        <li><strong>Cantidad y cifra correspondiente</strong> <span class="arrow">➔</span> Quantity and amount</li>
+        <li><strong>Precio total</strong> <span class="arrow">➔</span> Total price</li>
+        <li><strong>X</strong> <span class="arrow">➔</span> X (Close)</li>
+        <li><strong>Salir</strong> <span class="arrow">➔</span> Exit (o Close)</li>
+        <li><strong>Pagar</strong> <span class="arrow">➔</span> Pay</li>
+    </ul>
+
+    <h2>Visualización del Flujo (Inglés)</h2>
+    <div class="mermaid">
+    graph TD
+        %% Estilos
+        classDef greenOval fill:#4CAF50,stroke:#333,stroke-width:2px,color:white;
+        classDef greenRect fill:#81C784,stroke:#333,stroke-width:2px,color:black;
+        classDef pinkCircle fill:#F8BBD0,stroke:#333,stroke-width:2px,color:black,shape:circle;
+        classDef purpleRect fill:#CE93D8,stroke:#333,stroke-width:2px,color:black;
+        classDef purpleDiamond fill:#BA68C8,stroke:#333,stroke-width:2px,color:white;
+        classDef yellowRect fill:#FFF59D,stroke:#333,stroke-width:2px,color:black;
+
+        Home([Home]):::greenOval
+        Menu([Menu]):::greenOval
+        
+        subgraph OPTIONS
+            All[All]:::purpleRect
+            Ramen[Ramen]:::purpleRect
+            Sushi[Sushi]:::purpleRect
+            Starters[Starters]:::purpleRect
+            Desserts[Desserts]:::purpleRect
+        end
+
+        Add[Add]:::greenRect
+        Cart((Cart)):::pinkCircle
+        
+        CartName[Name]:::purpleRect
+        CartQty[Quantity]:::purpleRect
+        CartTotal{Total}:::purpleDiamond
+
+        Proceed{Proceed to checkout}:::purpleDiamond
+        ReceiptProductName[Product Name]:::greenRect
+        ReceiptQty([Quantity & Amount]):::greenOval
+        ReceiptTotal([Total Price]):::greenOval
+        
+        BtnX[X]:::greenRect
+        BtnExit[Exit]:::greenRect
+        BtnPay[Pay]:::yellowRect
+
+        Home --> Menu
+        Menu -.-> OPTIONS
+        
+        Home --> Add
+        Add --> Cart
+        Cart --> CartName
+        CartName --> CartQty
+        CartQty --> CartTotal
+
+        Add --> Proceed
+        Proceed -- Receipt --> ReceiptProductName
+        ReceiptProductName --> ReceiptQty
+        ReceiptQty --> ReceiptTotal
+        
+        ReceiptQty --> BtnX
+        BtnX --> BtnExit
+        ReceiptTotal --> BtnPay
+        BtnPay -.-> BtnExit
+    </div>
+
+    <script>
+        // Imprimir a PDF automáticamente tras cargar (con un pequeño retraso para que Mermaid renderice)
+        setTimeout(() => {
+            window.print();
+        }, 1500);
+    </script>
+</body>
+</html>

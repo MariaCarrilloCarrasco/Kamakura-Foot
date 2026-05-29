@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamakura Admin - Architecture Flowchart</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+        // Una vez que el diagrama haya cargado, abrimos el menú de imprimir/guardar PDF
+        window.onload = () => {
+            setTimeout(() => {
+                window.print();
+            }, 1000); 
+        };
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 2rem; background: #fff; }
+        h1 { color: #2c3e50; }
+        .mermaid { display: flex; justify-content: center; margin-top: 2rem; }
+        /* Ocultar las instrucciones de texto cuando se guarda como PDF */
+        @media print {
+            body { margin: 0; }
+            #instructions { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div id="instructions">
+        <h1>Kamakura Admin - Flowchart (PDF Export)</h1>
+        <p>El cuadro de diálogo para guardar se abrirá en un segundo.<br>Asegúrate de seleccionar <strong>"Guardar como PDF"</strong> (Save as PDF) en el destino de tu impresora.</p>
+    </div>
+    <div class="mermaid">
+    graph TD
+        %% Define Styles
+        classDef blueOval fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff,rx:20,ry:20;
+        classDef blueRect fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff;
+        classDef redRect fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff;
+        classDef greenRect fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff;
+        classDef orangeRect fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff;
+
+        A(["KAMAKURA ADMIN"]):::blueOval
+        
+        B["General Dashboard"]:::blueRect
+        C["Catalog"]:::redRect
+        D["Return to Store"]:::blueRect
+        
+        E["Today's Sales"]:::greenRect
+        F["Today's Orders"]:::redRect
+        G(["Average Ticket"]):::blueOval
+        H["Recent Orders"]:::greenRect
+        I["Sales Trends"]:::redRect
+        
+        J["Allows viewing and modifying <br> the product catalog offered"]:::redRect
+        K["Add Product"]:::blueRect
+        L["Edit"]:::orangeRect
+        M["Delete"]:::greenRect
+        
+        N["Previous View"]:::greenRect
+        O(["Start Over"]):::blueOval
+
+        A --> B
+        A --> C
+        A --> D
+        
+        B --> E
+        E --> F
+        E --> G
+        E --> H
+        E --> I
+        
+        C --> J
+        J --> K
+        J --> L
+        J --> M
+        
+        D --> N
+        N --> O
+    </div>
+</body>
+</html>

@@ -35,7 +35,7 @@ export const addToCart = (productId) => {
 export const removeFromCart = (productId) => {
     cart = cart.filter(item => item.id !== productId);
     renderCart();
-};
+ };
 
 export const clearCart = () => {
     cart = [];

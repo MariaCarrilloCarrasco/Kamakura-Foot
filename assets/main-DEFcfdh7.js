@@ -1,0 +1,27 @@
+import{g as v,f as P}from"./productsManager-iyGFd80_.js";let a=[];const I=()=>{const t=document.getElementById("cart-container");t&&(t.classList.toggle("active"),t.style.display==="none"||t.style.display===""?t.style.display="block":t.style.display="none")},y=()=>a,C=t=>{const n=v().find(r=>r.id===parseInt(t));!n||a.find(r=>r.id===n.id)||(a.push({...n,quantity:1}),p())},g=t=>{a=a.filter(e=>e.id!==t),p()},T=()=>{a=[],p()},f=(t,e)=>{const n=a.find(c=>c.id===t);if(n){if(n.quantity+=e,n.quantity<=0){g(t);return}p()}},h=()=>a.reduce((t,e)=>t+e.price*e.quantity,0),p=()=>{const t=document.getElementById("cart-products"),e=document.getElementById("cart-total");if(t){if(t.innerHTML="",a.length===0){t.innerHTML="<h3>Añade un plato a tu menú</h3>",e&&(e.textContent="Total: 0.00 €");return}a.forEach(n=>{const c=document.createElement("div");c.className="cart-container",c.innerHTML=`
+            <button class="close-button" data-id="${n.id}">
+                <img src="./assents/img/close.svg" alt="close">
+            </button>
+            <div class="text-container">
+                <h3>${n.name}</h3>
+                <h5>${(n.price*n.quantity).toFixed(2)} €</h5>
+            </div>
+            <div class="quantity-container" id="quantity">
+                <button class="decrease-qty" data-id="${n.id}">-</button>
+                <p class="quantity">${n.quantity}</p>
+                <button class="increase-qty" data-id="${n.id}">+</button>
+            </div>
+        `,t.appendChild(c)}),e&&(e.textContent=`Total: ${h().toFixed(2)} €`)}},q=Object.freeze(Object.defineProperty({__proto__:null,addToCart:C,calculateTotal:h,clearCart:T,getCart:y,removeFromCart:g,renderCart:p,toggleCart:I,updateQuantity:f},Symbol.toStringTag,{value:"Module"})),x="modulepreload",k=function(t){return"/Kamakura-Foot/"+t},E={},N=function(e,n,c){let r=Promise.resolve();if(n&&n.length>0){document.getElementsByTagName("link");const o=document.querySelector("meta[property=csp-nonce]"),i=(o==null?void 0:o.nonce)||(o==null?void 0:o.getAttribute("nonce"));r=Promise.allSettled(n.map(d=>{if(d=k(d),d in E)return;E[d]=!0;const u=d.endsWith(".css"),m=u?'[rel="stylesheet"]':"";if(document.querySelector(`link[href="${d}"]${m}`))return;const l=document.createElement("link");if(l.rel=u?"stylesheet":x,u||(l.as="script"),l.crossOrigin="",l.href=d,i&&l.setAttribute("nonce",i),document.head.appendChild(l),u)return new Promise((B,$)=>{l.addEventListener("load",B),l.addEventListener("error",()=>$(new Error(`Unable to preload CSS for ${d}`)))})}))}function s(o){const i=new Event("vite:preloadError",{cancelable:!0});if(i.payload=o,window.dispatchEvent(i),!i.defaultPrevented)throw o}return r.then(o=>{for(const i of o||[])i.status==="rejected"&&s(i.reason);return e().catch(s)})},_=()=>{const t=y();if(t.length===0)return;const e=document.getElementById("products-container"),n=document.getElementById("receipt-container"),c=document.getElementById("receipt-product"),r=document.getElementById("receipt-total");e&&n&&c&&(e.style.display="none",n.style.display="flex",c.innerHTML="",c.classList.remove("receipt-product"),c.style.width="100%",t.forEach(s=>{const o=document.createElement("div");o.className="receipt-product",o.innerHTML=`
+                <h3>${s.name}</h3>
+                <div class="receipt-price">
+                    <p>Cantidad: ${s.quantity}</p>
+                    <h5>${(s.price*s.quantity).toFixed(2)} €</h5>
+                </div>
+            `,c.appendChild(o)}),r&&(r.textContent=`Total: ${h().toFixed(2)} €`))},b=()=>{const t=document.getElementById("products-container"),e=document.getElementById("receipt-container");t&&e&&(e.style.display="none",t.style.display="flex")},w=()=>{N(async()=>{const{clearCart:t}=await Promise.resolve().then(()=>q);return{clearCart:t}},void 0).then(({clearCart:t})=>{t(),b()})},H=()=>{const t=document.getElementById("cart");t&&t.addEventListener("click",I);const e=document.getElementById("proceedPay-button");e&&e.addEventListener("click",_);const n=document.getElementById("close-receipt");n&&n.addEventListener("click",b);const c=document.getElementById("pay-button");c&&c.addEventListener("click",w),document.addEventListener("click",r=>{if(r.target.classList.contains("add-button")){const o=parseInt(r.target.dataset.id);if(!isNaN(o)){const i=document.getElementById("cart-container");y().find(m=>m.id===o)?i&&(i.style.display="none"):(C(o),i&&(i.style.display="block"))}}const s=r.target.closest(".close-button");if(s&&s.closest(".cart-container")){const o=parseInt(s.dataset.id);isNaN(o)||g(o)}if(r.target.classList.contains("increase-qty")){const o=parseInt(r.target.dataset.id);isNaN(o)||f(o,1)}if(r.target.classList.contains("decrease-qty")){const o=parseInt(r.target.dataset.id);isNaN(o)||f(o,-1)}})},S=(t="todos")=>{const e=v();return t==="todos"?e:e.filter(n=>n.category===t)},F=()=>{const t=document.getElementById("filters");t&&(t.innerHTML="",P.forEach(e=>{const n=document.createElement("button");n.className="filter",n.textContent=e,n.addEventListener("click",()=>{L(e)}),t.appendChild(n)}))},L=(t="todos")=>{const e=document.getElementById("products");if(!e)return;e.innerHTML="",S(t).forEach(c=>{const r=document.createElement("div");r.className="product-container",r.innerHTML=`
+            <h3>${c.name}</h3>
+            <p>${c.description}</p>
+            <div class="price-container">
+                <h5>${c.price.toFixed(2)} €</h5>
+                <button class="add-button" data-id="${c.id}">Añadir</button>
+            </div>
+        `,e.appendChild(r)})};F();L();H();

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamakura Admin - CMS & E-commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/Kamakura-Foot/assets/admin-CsNlg4As.js"></script>
+  <link rel="modulepreload" crossorigin href="/Kamakura-Foot/assets/productsManager-iyGFd80_.js">
+  <link rel="stylesheet" crossorigin href="/Kamakura-Foot/assets/admin-D-b6-UFV.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar lateral -->
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="/Kamakura-Foot/assets/logo-HBFDQ-Ki.svg" alt="logo" class="brand-logo">
+                <h2>Kamakura Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" id="btn-nav-dashboard">
+                    <span class="icon">📊</span> Panel General
+                </a>
+                <a href="#" class="nav-item" id="btn-nav-catalog">
+                    <span class="icon">🍱</span> Catálogo (CMS)
+                </a>
+                <div class="nav-divider"></div>
+                <a href="./index.html" class="nav-item return-btn">
+                    <span class="icon">🏪</span> Volver a la Tienda
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Header superior -->
+            <header class="main-header">
+                <h1>Panel General</h1>
+                <div class="admin-profile">
+                    <div class="profile-info">
+                        <span class="profile-name">Administrador</span>
+                        <span class="profile-role">Gestor de Contenidos</span>
+                    </div>
+                    <div class="profile-avatar">A</div>
+                </div>
+            </header>
+
+            <!-- Sección: Dashboard -->
+            <section id="section-dashboard" class="content-section">
+                <!-- Tarjetas KPI (Métricas del E-commerce) -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-icon sales-icon">💰</div>
+                        <div class="kpi-data">
+                            <h3>Ventas del Día</h3>
+                            <p class="kpi-value" id="kpi-sales">154.50 €</p>
+                            <span class="kpi-trend positive">↑ 12% vs ayer</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon orders-icon">🛒</div>
+                        <div class="kpi-data">
+                            <h3>Pedidos Hoy</h3>
+                            <p class="kpi-value" id="kpi-orders">12</p>
+                            <span class="kpi-trend positive">↑ 4% vs ayer</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon ticket-icon">📊</div>
+                        <div class="kpi-data">
+                            <h3>Ticket Medio</h3>
+                            <p class="kpi-value" id="kpi-average">12.87 €</p>
+                            <span class="kpi-trend negative">↓ 2% vs ayer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficas y Actividad Reciente -->
+                <div class="dashboard-grid">
+                    <!-- Gráfica de Ventas (Glassmorphism card) -->
+                    <div class="chart-card glass-card">
+                        <h2>Tendencia de Ventas (Por hora)</h2>
+                        <div class="mock-chart">
+                            <div class="chart-bar" style="--height: 30%"><span class="bar-label">12h</span></div>
+                            <div class="chart-bar" style="--height: 50%"><span class="bar-label">13h</span></div>
+                            <div class="chart-bar highlight" style="--height: 95%"><span class="bar-label">14h</span></div>
+                            <div class="chart-bar highlight" style="--height: 85%"><span class="bar-label">15h</span></div>
+                            <div class="chart-bar" style="--height: 40%"><span class="bar-label">16h</span></div>
+                            <div class="chart-bar" style="--height: 20%"><span class="bar-label">17h</span></div>
+                            <div class="chart-bar" style="--height: 60%"><span class="bar-label">20h</span></div>
+                            <div class="chart-bar highlight" style="--height: 90%"><span class="bar-label">21h</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Últimos Pedidos -->
+                    <div class="recent-orders-card glass-card">
+                        <h2>Pedidos Recientes</h2>
+                        <div class="orders-list">
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <span class="order-id">#1084</span>
+                                    <span class="order-time">Hace 5 min</span>
+                                </div>
+                                <span class="order-items">2x Miso Ramen, 1x Mochi</span>
+                                <span class="order-price">21.50 €</span>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <span class="order-id">#1083</span>
+                                    <span class="order-time">Hace 18 min</span>
+                                </div>
+                                <span class="order-items">1x Shogun roll, 1x Fuwa Fuwa</span>
+                                <span class="order-price">14.15 €</span>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-info">
+                                    <span class="order-id">#1082</span>
+                                    <span class="order-time">Hace 45 min</span>
+                                </div>
+                                <span class="order-items">1x Tonkotsu Ramen</span>
+                                <span class="order-price">11.95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección: Catálogo (CMS) -->
+            <section id="section-catalog" class="content-section hidden">
+                <div class="catalog-header">
+                    <h2>Inventario de Platos</h2>
+                    <button class="add-btn-primary" id="btn-add-product">+ Añadir Producto</button>
+                </div>
+
+                <!-- Tabla de Productos -->
+                <div class="table-container glass-card">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre del Plato</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catalog-table-body">
+                            <!-- Inyectado dinámicamente con JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para Añadir/Editar Producto -->
+    <div class="modal-overlay hidden" id="product-modal">
+        <div class="modal-card glass-card">
+            <header class="modal-header">
+                <h2 id="modal-title">Añadir Nuevo Plato</h2>
+                <button class="modal-close" id="btn-modal-close">&times;</button>
+            </header>
+            <form id="product-form" class="modal-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label for="product-name">Nombre del Plato</label>
+                    <input type="text" id="product-name" required placeholder="Ej: Gyoza de Cerdo">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-category">Categoría</label>
+                        <select id="product-category" required>
+                            <!-- Inyectado dinámicamente con las categorías -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Precio (€)</label>
+                        <input type="number" id="product-price" step="0.01" min="0.01" required placeholder="Ej: 5.50">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-description">Descripción</label>
+                    <textarea id="product-description" rows="3" required placeholder="Describe los ingredientes, alérgenos, etc."></textarea>
+                </div>
+
+                <footer class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btn-modal-cancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Producto</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
